@@ -1,6 +1,8 @@
 #include<iostream>
+#include<cctype>
 
 std::string reverseString(std::string word);
+bool checkPalindrome(std::string orig, std::string rev);
 
 int main()
 {
@@ -13,6 +15,17 @@ int main()
 	std::string reversed = reverseString(word);
 
 	std::cout << "The word after it was reversed was: " << reversed << '\n';
+
+	bool isPalindrome = checkPalindrome(word, reversed);
+
+	if (isPalindrome)
+	{
+		std::cout << "The word you enterd is a palindrome.\n";
+	}
+	else
+	{
+		std::cout << "The word you enterd is not a palindrome.\n";
+	}
 
 	return 0;
 }
@@ -35,4 +48,21 @@ std::string reverseString(std::string word)
 	}
 
 	return revWord;
+}
+
+bool checkPalindrome(std::string orig, std::string rev)
+{
+	for (unsigned int i = 0; i < orig.size(); ++i)
+	{
+		if (std::tolower(orig[i]) == std::tolower(rev[i]))
+		{
+			continue;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	return true;
 }
